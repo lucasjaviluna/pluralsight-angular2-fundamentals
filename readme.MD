@@ -39,3 +39,8 @@ user.name --> expression
 (click) --> binding
 
 https://github.com/jmcooper/angular2-fundamentals-files
+
+
+----------------
+**Services**
+Sirven para agrupar logica de negocio en un archivo separado de modo que se pueda inyectar donde se necesita y s pueda reutilizar. Por ej: trer los datos dese una api y manejar las excepciones vinculadas a eso.
