@@ -32,5 +32,10 @@ Crear un component todo-list:
  - ng g component todo-list
 --------------
 
+**Interpolation, expressions, events and statements**
+{{user.name}} --> interpolation (con dobles llaves) <h2>{{user.name}}</h2>
+[src] --> Property binding (con comillas dobles)  <img [src]="user.imageUrl">
+user.name --> expression
+(click) --> binding
 
 https://github.com/jmcooper/angular2-fundamentals-files
