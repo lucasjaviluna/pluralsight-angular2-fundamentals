@@ -47,7 +47,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
 //Si hay otro elemento igual, fuera del componente, no se le aplica el estilo (está encapsulado)
 //event? chequea si el evento llegó al componente y no es null
 
-//*ngIf no pone el elemento en el domicilio
+//*ngIf no pone el elemento en el dom
 //[hidden] lo pone pero lo hace hidden
 //[class.green]="condicion"  --> si se cumṕle le aplica la clase green al elemento
 
