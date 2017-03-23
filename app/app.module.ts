@@ -32,7 +32,8 @@ import {appRoutes} from './routes';
   ],
   providers: [
     EventService,
-    ToastrService
+    ToastrService,
+    {provide: 'api', useValue: 'http://localhost:3000'}
   ],
   bootstrap: [EventsAppComponent]
 })
