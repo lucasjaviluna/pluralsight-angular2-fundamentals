@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
+import {AuthService} from './user/auth.service';
 
 //Components
 import {
@@ -49,6 +50,7 @@ import {appRoutes} from './routes';
     ToastrService,
     EventRouteActivator,
     EventListResolver,
+    AuthService,
     // {provide: EventService, useValue: EventService},
     {provide: 'canDeactivateCreateEvent', useValue: checkDirtyState},
     {provide: 'api', useValue: 'http://localhost:3000'}
