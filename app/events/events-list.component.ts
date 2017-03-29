@@ -57,12 +57,17 @@ export class EventsListComponent implements OnInit {
 
   ngOnInit() {
     //LO SACAMOS PORQUE YA ESTA EN EL RESOLVER (ver Routes)
-    this.eventService.getEventos().subscribe(events => {
-      this.events = events;
-    });
+    // this.eventService.getEventos().subscribe(events => {
+    //   this.events = events;
+    // });
 
     //['events'] machea con 'events' en el resolver en la ruta
-    // this.events = this.route.snapshot.data['events'];
+    //eventos es un observable, así que hay que aplicarle el subscribe para obtener los datos
+    let eventos = this.route.snapshot.data['events'];
+    eventos.subscribe(events => {
+        this.events = events;
+        console.log('eventos', events);
+    });
   }
 
   handleEventClicked(data) {
