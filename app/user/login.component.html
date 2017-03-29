@@ -4,21 +4,53 @@
   <form autocomplete="off"
     #loginForm="ngForm"
     (ngSubmit)="login(loginForm.value)"
+    novalidate
   >
     <div class="form-group" >
       <label for="userName">User Name:</label>
-      <input id="userName" type="text" class="form-control" placeholder="User Name..."
+      <em *ngIf="loginForm.controls.userName?.invalid && (loginForm.controls.userName?.touched || mouseoverLogin)">Required</em>
+      <input required id="userName" type="text" class="form-control" placeholder="User Name..."
         [(ngModel)]="userName" name="userName"
       />
     </div>
     <div class="form-group" >
       <label for="password">Password:</label>
-      <input id="password" type="password" class="form-control"placeholder="Password..."
+      <em *ngIf="loginForm.controls.password?.invalid && (loginForm.controls.password?.touched || mouseoverLogin)">Required</em>
+      <input required id="password" type="password" class="form-control"placeholder="Password..."
         [(ngModel)]="password" name="password"
       />
     </div>
 
-    <button type="submit" class="btn btn-primary">Login</button>
+    <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
+      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+    </span>
     <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
   </form>
+</div>
+
+<div class="col-md-3">
+  loginForm.valid: {{loginForm.valid}} <br/>
+  loginForm.invalid: {{loginForm.invalid}} <br/>
+  loginForm.dirty: {{loginForm.dirty}} <br/>
+  loginForm.pristine: {{loginForm.pristine}} <br/>
+  loginForm.submitted: {{loginForm.submitted}} <br/>
+  loginForm.touched: {{loginForm.touched}} <br/>
+  loginForm.untouched: {{loginForm.untouched}} <br/>
+</div>
+<div class="col-md-3" style="padding-left:25px">
+  userName.valid: {{loginForm.controls.userName?.valid}} <br/>
+  userName.invalid: {{loginForm.controls.userName?.invalid}} <br/>
+  userName.dirty: {{loginForm.controls.userName?.dirty}} <br/>
+  userName.pristine: {{loginForm.controls.userName?.pristine}} <br/>
+  userName.submitted: {{loginForm.controls.userName?.submitted}} <br/>
+  userName.touched: {{loginForm.controls.userName?.touched}} <br/>
+  userName.untouched: {{loginForm.controls.userName?.untouched}} <br/>
+  <br/><br/>
+  password.valid: {{loginForm.controls.password?.valid}} <br/>
+  password.invalid: {{loginForm.controls.password?.invalid}} <br/>
+  password.dirty: {{loginForm.controls.password?.dirty}} <br/>
+  password.pristine: {{loginForm.controls.password?.pristine}} <br/>
+  password.submitted: {{loginForm.controls.password?.submitted}} <br/>
+  password.touched: {{loginForm.controls.password?.touched}} <br/>
+  password.untouched: {{loginForm.controls.password?.untouched}} <br/>
 </div>
