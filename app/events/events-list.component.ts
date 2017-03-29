@@ -1,6 +1,8 @@
 import {Component, OnInit, Inject} from '@angular/core';
 import {EventService} from './shared/event.service';
 import {ToastrService} from '../common/toastr.service';
+import {Subject} from 'rxjs';
+import {ActivatedRoute, Resolve} from '@angular/router';
 
 @Component({
   template: `
@@ -44,13 +46,23 @@ export class EventsListComponent implements OnInit {
   //   }
   // };
 
-  events: any[];
-  constructor(private eventService: EventService, private toastr:ToastrService, @Inject('api') private api) {
+  // events: Resolve<any>;
+  events: any;
+  constructor(private eventService: EventService,
+              private toastr:ToastrService,
+              @Inject('api') private api,
+              private route:ActivatedRoute) {
     console.log(this.api);
   }
 
   ngOnInit() {
-    this.events = this.eventService.getEventos();
+    //LO SACAMOS PORQUE YA ESTA EN EL RESOLVER (ver Routes)
+    this.eventService.getEventos().subscribe(events => {
+      this.events = events;
+    });
+
+    //['events'] machea con 'events' en el resolver en la ruta
+    // this.events = this.route.snapshot.data['events'];
   }
 
   handleEventClicked(data) {
