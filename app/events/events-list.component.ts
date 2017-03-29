@@ -4,6 +4,8 @@ import {ToastrService} from '../common/toastr.service';
 import {Subject} from 'rxjs';
 import {ActivatedRoute, Resolve} from '@angular/router';
 
+import {IEvent} from './shared/index';
+
 @Component({
   template: `
   <div>
@@ -47,7 +49,7 @@ export class EventsListComponent implements OnInit {
   // };
 
   // events: Resolve<any>;
-  events: any;
+  events: IEvent[];
   constructor(private eventService: EventService,
               private toastr:ToastrService,
               @Inject('api') private api,

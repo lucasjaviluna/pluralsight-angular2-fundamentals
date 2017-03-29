@@ -1,5 +1,7 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 
+import {IEvent} from './shared/index';
+
 @Component({
   selector: 'event-thumbnail',
   template: `<div>
@@ -54,14 +56,14 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
 export class EventThumbnailComponent {
   //propiedad de tipo any. Viene por input al componente
   //comunicacion con child components
-  @Input() event: any
+  @Input() event: IEvent
   @Output() eventClick = new EventEmitter()
   someProperty:any = "some value";
 
   handleClickMe() {
     //emite un evento foo hacia el componente padre
     this.eventClick.emit(this.event.name);
-    console.log('Clicked!');
+    console.log('Clicked!', this.event.name);
   }
 
   logFoo() {
