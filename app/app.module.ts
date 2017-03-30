@@ -3,6 +3,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
 import {AuthService} from './user/auth.service';
 
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 //Components
 import {
   EventsListComponent,
@@ -34,6 +36,8 @@ import {appRoutes} from './routes';
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   declarations: [
