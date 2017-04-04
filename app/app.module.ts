@@ -65,7 +65,9 @@ declare let toastr: Toastr;
     EventService,
     // ToastrService,
     {provide: TOASTR_TOKEN, useValue: toastr},
-    EventRouteActivator,
+    //EventRouteActivator,
+    {provide: EventRouteActivator, useClass: EventRouteActivator}, //provide: es el token. Cuando se usa en un componente para
+    //DI entonces se usa la clase en useClass
     EventListResolver,
     AuthService,
     // {provide: EventService, useValue: EventService},
