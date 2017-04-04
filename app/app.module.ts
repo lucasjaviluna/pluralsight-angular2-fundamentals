@@ -31,11 +31,15 @@ import {Error404Component} from './errors/404.component';
 
 //Services
 // import {EventService} from './events/shared/event.service';
-import {ToastrService} from './common/toastr.service';
+//import {ToastrService} from './common/toastr.service';
+import {TOASTR_TOKEN, Toastr} from './common/toastr.service';
 import {CollapsibleWellComponent} from './common/collapsible-well.component';
 
 //Routes
 import {appRoutes} from './routes';
+
+
+declare let toastr: Toastr;
 
 @NgModule({
   imports: [
@@ -59,7 +63,8 @@ import {appRoutes} from './routes';
   ],
   providers: [
     EventService,
-    ToastrService,
+    // ToastrService,
+    {provide: TOASTR_TOKEN, useValue: toastr},
     EventRouteActivator,
     EventListResolver,
     AuthService,

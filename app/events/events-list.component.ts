@@ -1,6 +1,6 @@
 import {Component, OnInit, Inject} from '@angular/core';
 import {EventService} from './shared/event.service';
-import {ToastrService} from '../common/toastr.service';
+// import {ToastrService} from '../common/toastr.service';
 import {Subject} from 'rxjs';
 import {ActivatedRoute, Resolve} from '@angular/router';
 
@@ -16,7 +16,7 @@ import {IEvent} from './shared/index';
     </div>
     <div class="row">
       <div *ngFor="let event of events" class="col-md-5">
-        <event-thumbnail #thumbnail (click)="handleThumbnailClick(event.name)" (eventClick)="handleEventClicked($event)" [event]="event"></event-thumbnail>
+        <event-thumbnail #thumbnail (eventClick)="handleEventClicked($event)" [event]="event"></event-thumbnail>
         <h3>{{thumbnail.someProperty}}</h3>
       </div>
     </div>
@@ -31,6 +31,8 @@ import {IEvent} from './shared/index';
 // <h3>{{thumbnail.someProperty}}</h3>
 
 //*ngFor: es una directiva estructural
+
+//<event-thumbnail #thumbnail (click)="handleThumbnailClick(event.name)" (eventClick)="handleEventClicked($event)" [event]="event"></event-thumbnail>
 
 export class EventsListComponent implements OnInit {
   //mando event1 como un input al componente thumbnail
@@ -51,7 +53,7 @@ export class EventsListComponent implements OnInit {
   // events: Resolve<any>;
   events: IEvent[];
   constructor(private eventService: EventService,
-              private toastr:ToastrService,
+              // private toastr:ToastrService,
               @Inject('api') private api,
               private route:ActivatedRoute) {
     console.log(this.api);
@@ -76,7 +78,7 @@ export class EventsListComponent implements OnInit {
     console.log('Received:', data);
   }
 
-  handleThumbnailClick(eventName) {
-    this.toastr.success(eventName);
-  }
+  // handleThumbnailClick(eventName) {
+  //   this.toastr.success(eventName);
+  // }
 }
